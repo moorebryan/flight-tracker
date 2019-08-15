@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Skeleton application demoing Heroku and Flask integration.">
+<meta name="author" content="@gotoariel">
+<!-- <link rel="icon" href="favicon.ico"> -->
+
+<title>Analysis</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- Bokeh -->
+<link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.css" type="text/css" />
+<link rel="stylesheet" href="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.css" type="text/css" />
+
+<style>
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+margin-bottom: 0;
+border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+padding-top: 20px;
+background-color: #f1f1f1;
+height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+background-color: #555;
+color: white;
+padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+.sidenav {
+height: auto;
+padding: 15px;
+}
+.row.content {height:auto;} 
+}
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse" role="navigation">
+<div class="container-fluid">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>                        
+</button>
+<a class="navbar-brand" href="/">LAX ARRIVAL PROCEDURES</a>
+</div>
+<div class="collapse navbar-collapse" id="myNavbar">
+<ul class="nav navbar-nav">
+<li class="active"><a href="/analysis">Analyze Flights</a></li>
+<li><a href="/results">Results</a></li>
+<li><a href="/about">How it Works</a></li>
+<li><a href="/contact">Contact</a></li>
+<li><a href="https://github.com/moorebryan/flight-tracker" target="_blank">Source</a></li>
+</ul>
+
+</div>
+</div>
+</nav>
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12"> 
+<h2>Analyze Flights</h2>
+<p>This interface can be used to see the natural clustering of flights arriving to LAX. </p>
+
+Please choose a day you wish to examine flights arriving to LAX. The earliest available date is July 8, 2019.
+<form id = "select-date"action="/results" method="post">
+  Date: <input type="date" name="day_choice" value="2019-07-22" min="2019-07-08">
+  <input type="submit">
+</form>
+
+<p><strong>This is not supported in Safari or Internet Explorer 11 (or earlier).</p>
+<div><h3><center>Note!!!<br>
+After submitting this may take a minute to proceed to the Results page!<br>
+I promise it's not broken. There is a lot of data to gather and algorithms being run in the background.</center><h3></div>
+
+
+
+<div id="progress-url" class="row" style="display: none;">
+<div class="col-sm-2">
+<div class="progress center-block legend">
+<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> Running...
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<footer class="container-fluid text-center">
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<!-- Bokeh
+=========== -->
+<script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-1.2.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.pydata.org/bokeh/release/bokeh-widgets-1.2.0.min.js"></script>
+{{ the_script | safe }}
+
+<script>
+
+<div id="progress-url" class="row" style="display: none;">
+<div class="col-sm-2">
+<div class="progress center-block legend">
+<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"> Running...
+</div>
+</div>
+</div>
+</div>
+
+$('#select-date').submit(function () {
+    showHide_url();
+    document.getElementById("select-date").submit();
+    //return false; //just to show proper divs are hiding/showing
+});
+function showHide_url() {
+    $('#progress-url').show();
+    $('#select-date').hide()
+}
+</script>
+
+
+
+</body>
+</html>

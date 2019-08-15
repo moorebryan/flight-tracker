@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Skeleton application demoing Heroku and Flask integration.">
+<meta name="author" content="@gotoariel">
+<!-- <link rel="icon" href="favicon.ico"> -->
+
+<title>About</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+margin-bottom: 0;
+border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {height: 450px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+padding-top: 20px;
+background-color: #f1f1f1;
+height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+background-color: #555;
+color: white;
+padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+.sidenav {
+height: auto;
+padding: 15px;
+}
+.row.content {height:auto;} 
+}
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+<div class="container-fluid">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>                        
+</button>
+<a class="navbar-brand" href="/">LAX ARRIVAL PROCEDURES</a>
+</div>
+<div class="collapse navbar-collapse" id="myNavbar">
+<ul class="nav navbar-nav">
+<li><a href="/analysis">Analyze Flights</a></li>
+<li><a href="/results">Results</a></li>
+<li class="active"><a href="/about">How it Works</a></li>
+<li><a href="/contact">Contact</a></li>
+<li><a href="https://github.com/moorebryan/flight-tracker" target="_blank">Source</a></li>
+</ul>
+
+</div>
+</div>
+</nav>
+
+<div class="container-fluid">    
+<div class="row">
+<div class="col-md-12">
+<h3>Which Clustering Algorithm?</h3>
+<p>K-Means clustering has been chosen due to its ability to define the number of clusters
+and it was shown to be relatively good when examining clustering error metrics.</p>
+<h3>Why Only 5 Clusters?</h3>
+<p>Due to limitations in heroku it cannot calculate and display the number of 
+clusters I want to show (23). I thus am showing the highest possible number 
+allowed while including 100 flights per day. Any more crashes the server.</p>
+<h3>Future Plans</h3>
+In the future I will crawl along each individual fligt and find which waypoints 
+it passess near to. Using that I will use K-Nearest Neighbors to assign each 
+flight the most likely trajectory.
+</div>
+</div>
+</div>
+
+<footer class="container-fluid text-center">
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
