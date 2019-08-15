@@ -17,7 +17,7 @@ from bokeh.embed import components
 app = Flask(__name__)
 
 # Make connection to MongoDB Server
-MONGODB_URL='mongodb://datamanager:airtransportationrulez@167.99.24.166:2700/datamanager'
+MONGODB_URL=''
 client = MongoClient(MONGODB_URL)
 db = client.datamanager
 curs=db.flightTracks.find()
